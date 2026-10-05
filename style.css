@@ -1,0 +1,124 @@
+/* Configurações básicas da página */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f0f2f5;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container do Flashcard - Define a perspectiva 3D */
+.flashcard-container {
+  width: 320px;
+  height: 420px;
+  perspective: 1000px; /* Cria o efeito de profundidade 3D */
+}
+
+/* Estrutura do Card que vai girar */
+.flashcard {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Efeito de rotação ao passar o mouse ou focar */
+.flashcard-container:hover .flashcard {
+  transform: rotateY(180deg);
+}
+
+/* Estilo comum para ambos os lados (Frente e Verso) */
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Esconde o lado oposto durante a rotação */
+  border-radius: 16px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+/* --- ESTILO DA FRENTE --- */
+.card-front {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: #ffffff;
+}
+
+.tag {
+  align-self: center;
+  background-color: #e94560;
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.card-front h2 {
+  color: #f8b400;
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+.statement {
+  font-size: 1.15rem;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.hint {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* --- ESTILO DO VERSO --- */
+.card-back {
+  background-color: #ffffff;
+  color: #333333;
+  transform: rotateY(180deg); /* Já começa virado no eixo Y */
+  border: 2px solid #e94560;
+}
+
+.status.mito {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #d9534f;
+  background-color: #fdf2f2;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.card-back h3 {
+  font-size: 1.1rem;
+  color: #1a1a2e;
+}
+
+.card-back p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #555;
+}
+
+.curiosity {
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-left: 4px solid #f8b400;
+  border-radius: 4px;
+  text-align: left;
+  font-size: 0.85rem !important;
+}
